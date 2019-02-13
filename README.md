@@ -7,8 +7,7 @@ It is a template catkin package to start your own android ros application. A cus
 # How to use it
 - It has been mostly done following the step at http://wiki.ros.org/android/Tutorials.
 - Hence, before to clone the repo and compile (either with catkin or android studio), one need to be sure to follow the steps at http://wiki.ros.org/android/kinetic/Android%20Studio/Download to configure android studio and then the steps at http://wiki.ros.org/android/Tutorials/kinetic/Installation%20-%20ROS%20Development%20Environment to download and compile in the Home folder the android_core_components workspace.
-- The build.gradle is configure such that the name of other subproject like android_ros_app_component should always start by "android_"
-- The build.gradle is configure such that the name of other subproject like android_ros_app_component should always start by "android_".
+- The build.gradle is configured such that the name of other subproject like android_ros_app_component should always start by "android_"
 - Always check the build.gradle file to be sure that you implement all the poackage used in the app (e.g. ROS messages and services, libraries, other rosjava packages).
 
 # Known Issue

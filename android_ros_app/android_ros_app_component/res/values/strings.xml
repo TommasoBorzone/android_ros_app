@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Android ROS app</string>
+    <string name="activity2_name">Draw Circle</string>
+    <string name="main_activity_button_label">Let\'s draw</string>
+    <string name="meters">3</string>
+    <string name="window_real_size">width = 3 m</string>
+    <string name="edit_num_of_points">Enter the Number of Points to collect</string>
+    <string name="frame_id">map</string>
+    <string name="publish_topic_id">publish_data</string>
+    <string name="service_client_id">request_data</string>
+
+</resources>

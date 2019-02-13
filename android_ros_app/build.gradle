@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 tommaso
+ * Copyright (C) 2019 Tommaso Borzone
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -19,7 +19,7 @@ task wrapper(type: Wrapper) {
 }
 
 buildscript {
-    apply from: "https://github.com/rosjava/android_core/raw/kinetic/buildscript.gradle"
+    apply from: project.file("buildscript.gradle")
 }
 
 apply plugin: 'catkin'
@@ -27,11 +27,11 @@ apply plugin: 'catkin'
 
 allprojects {
     /* A github url provides a good standard unique name for your project */
-    group 'com.github.rosjava.android_ros_app'
+    group 'org.ros.android.android_ros_app'
     version = project.catkin.pkg.version
 }
 
-subprojects {
+configure(subprojects.findAll { it.name.startsWith("android_") }) {
     /*
      * The android plugin configures a few things:
      *
@@ -49,15 +49,38 @@ subprojects {
      *   https://github.com/rosjava/rosjava_bootstrap/blob/kinetic/gradle_plugins/src/main/groovy/org/ros/gradle_plugins/RosAndroid.groovy#L14
      */
     apply plugin: 'ros-android'
-
     afterEvaluate { project ->
+        // Change the layout of Android projects to be compatible with Eclipse.
         android {
+            sourceSets {
+                //noinspection GroovyAssignabilityCheck
+                main {
+                    manifest.srcFile "AndroidManifest.xml"
+                    res.srcDirs "res"
+                    assets.srcDirs "assets"
+                    java.srcDirs "src"
+                }
+            }
+
+            // Copy JAR dependencies into the libs directory for Eclipse.
+            task deployLibs(type: Copy) {
+                from { configurations.compile }
+                into { "${project.projectDir}/libs" }
+            }
+
             // Exclude a few files that are duplicated across our dependencies and
             // prevent packaging Android applications.
             packagingOptions {
+                /* https://github.com/rosjava/android_core/issues/194 */
                 exclude "META-INF/LICENSE.txt"
                 exclude "META-INF/NOTICE.txt"
+            }
+
+            lintOptions {
+                abortOnError false
             }
         }
     }
 }
+
+defaultTasks 'assembleRelease', 'uploadArchives'

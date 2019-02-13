@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context="org.ros.android.android_ros_app_component.MainActivity">
+
+    <EditText
+        android:id="@+id/edit_num_of_points"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_num_of_points" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="178dp"
+        android:background="?android:attr/listDivider" />
+
+    <Button
+        android:id="@+id/main_activity_triangle_btn"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:textColor="@android:color/black"
+        android:background="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="@string/main_activity_button_label"
+        android:onClick="launchChildActivity"/>
+
+</LinearLayout>

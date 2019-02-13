@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChildActivity"
+    tools:layout_editor_absoluteY="81dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:gravity="center"
+        android:text="@string/window_real_size"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <org.ros.android.android_ros_app_component.DrawCircleView
+        android:id="@+id/activity_draw_circle"
+        android:layout_width="match_parent"
+        android:layout_height="377dp"
+        android:layout_marginBottom="10dp"
+        custom:userInput="" />
+
+    <Button
+        android:id="@+id/accept_circle_btn"
+        android:layout_width="130dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginBottom="5dp"
+        android:onClick="AcceptButton"
+        android:text="Accept"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
